@@ -19,7 +19,7 @@ public class UserService {
         return userRepository.save(user);
     }
 
-    public User getUserById(Long id) {
+    public User getUserById(String id) {
         return userRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("User not found"));
     }
@@ -29,7 +29,7 @@ public class UserService {
     }
 
     @Transactional
-    public User updateUser(Long id, User updatedUser) {
+    public User updateUser(String id, User updatedUser) {
         User existing = getUserById(id);
 
         existing.setFirstName(updatedUser.getFirstName());
@@ -37,10 +37,6 @@ public class UserService {
         existing.setEmail(updatedUser.getEmail());
         existing.setUsername(updatedUser.getUsername());
         existing.setPhoneNumber(updatedUser.getPhoneNumber());
-        existing.setBio(updatedUser.getBio());
-        existing.setProfilePictureUrl(updatedUser.getProfilePictureUrl());
-        existing.setAddress(updatedUser.getAddress());
-        existing.setBirthdate(updatedUser.getBirthdate());
 
         if (updatedUser.getPassword() != null && !updatedUser.getPassword().isBlank()) {
             existing.setPassword(updatedUser.getPassword());
@@ -50,7 +46,7 @@ public class UserService {
     }
 
     @Transactional
-    public void deleteUser(Long id) {
+    public void deleteUser(String id) {
         User user = getUserById(id);
         userRepository.delete(user);
     }

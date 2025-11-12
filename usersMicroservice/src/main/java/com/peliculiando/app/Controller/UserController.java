@@ -1,5 +1,6 @@
 package com.peliculiando.app.Controller;
 
+import com.peliculiando.app.DTO.UserCreateDTO;
 import com.peliculiando.app.DTO.UserDTO;
 import com.peliculiando.app.Entity.User;
 import com.peliculiando.app.Mapper.UserMapper;
@@ -7,6 +8,7 @@ import com.peliculiando.app.Service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,17 +26,18 @@ public class UserController {
     @Operation(summary = "Crear un nuevo usuario")
     @ApiResponse(responseCode = "201", description = "Usuario creado exitosamente")
     @ApiResponse(responseCode = "400", description = "Datos de cliente inválidos")
-    public ResponseEntity<UserDTO> createUser(@RequestBody UserDTO userDTO) {
-        User user = userMapper.toEntity(userDTO);
+    public ResponseEntity<UserDTO> createUser(@RequestBody UserCreateDTO userCreateDTO) {
+        User user = userMapper.toEntity(userCreateDTO);
         User created = userService.createUser(user);
-        return ResponseEntity.ok(userMapper.toDTO(created));
+        return ResponseEntity.status(HttpStatus.CREATED).body(userMapper.toDTO(created));
     }
 
     @GetMapping("/{id}")
     @Operation(summary = "Obtener usuario por ID")
     @ApiResponse(responseCode = "200", description = "Usuario encontrado")
     @ApiResponse(responseCode = "404", description = "Usuario no encontrado")
-    public ResponseEntity<UserDTO> getUserById(@PathVariable Long id) {
+    public ResponseEntity<UserDTO> getUserById(@PathVariable String id) {
+        System.out.println(userService.getUserById(id).getPassword());
         return ResponseEntity.ok(userMapper.toDTO(userService.getUserById(id)));
     }
 
@@ -51,7 +54,7 @@ public class UserController {
     @Operation(summary = "Actualizar un usuario existente")
     @ApiResponse(responseCode = "200", description = "Usuario actualizado")
     @ApiResponse(responseCode = "404", description = "Usuario no encontrado")
-    public ResponseEntity<UserDTO> updateUser(@PathVariable Long id, @RequestBody UserDTO userDTO) {
+    public ResponseEntity<UserDTO> updateUser(@PathVariable String id, @RequestBody UserDTO userDTO) {
         User user = userMapper.toEntity(userDTO);
         User updated = userService.updateUser(id, user);
         return ResponseEntity.ok(userMapper.toDTO(updated));
@@ -61,7 +64,7 @@ public class UserController {
     @Operation(summary = "Eliminar un usuario")
     @ApiResponse(responseCode = "204", description = "Usuario eliminado")
     @ApiResponse(responseCode = "404", description = "Usuario no encontrado")
-    public ResponseEntity<Void> deleteUser(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteUser(@PathVariable String id) {
         userService.deleteUser(id);
         return ResponseEntity.noContent().build();
     }

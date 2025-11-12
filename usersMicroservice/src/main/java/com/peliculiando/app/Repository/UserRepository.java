@@ -1,16 +1,15 @@
 package com.peliculiando.app.Repository;
 
 import com.peliculiando.app.Entity.User;
-import jakarta.persistence.Id;
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.mongodb.repository.MongoRepository;
 
 import java.util.Optional;
 
-public interface UserRepository extends JpaRepository<User, Long> {
+public interface UserRepository extends MongoRepository<User, Long> {
 
     boolean existsByEmail(String email);
     boolean existsByUsername(String username);
     Optional<User> findByEmail(String email);
-    Optional<User> findById(Id id);
+    Optional<User> findById(String id);
 
 }
