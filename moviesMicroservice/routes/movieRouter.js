@@ -63,7 +63,7 @@ router.get('/:id', (req, res) => {
  *                 type: string
  *               genre:
  *                 type: string
- *               year:
+ *               releaseYear:
  *                 type: number
  *     responses:
  *       201:

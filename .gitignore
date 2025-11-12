@@ -1,0 +1,19 @@
+# Node
+node_modules/
+npm-debug.log
+.env
+
+# Gradle / Java
+.gradle/
+build/
+out/
+!gradlew
+!gradlew.bat
+
+# IDEs
+.vscode/
+.idea/
+
+# Sistema
+.DS_Store
+Thumbs.db
