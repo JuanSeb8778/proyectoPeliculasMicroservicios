@@ -5,9 +5,6 @@ import google.generativeai as genai
 from mcp import ClientSession, StdioServerParameters
 from mcp.client.stdio import stdio_client
 
-# ==================================================
-# 🔧 CONFIGURACIÓN INICIAL
-# ==================================================
 load_dotenv()
 
 api_key = os.getenv("GEMINI_API_KEY")
@@ -20,9 +17,7 @@ print("✓ API Key de Gemini configurada correctamente")
 selected_model = "models/gemini-2.0-flash"
 print(f"✅ Usando modelo gratuito: {selected_model}")
 
-# ==================================================
-# 🤖 CLASE PRINCIPAL DEL AGENTE
-# ==================================================
+
 class MovieAgent:
     def __init__(self):
         self.model = genai.GenerativeModel(selected_model)
@@ -146,19 +141,16 @@ Después de recibir los resultados, proporciona una respuesta amigable al usuari
         return response_text
 
 
-# ==================================================
-# 🚀 API HTTP PARA CONECTAR CON REACT (FASTAPI)
-# ==================================================
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 
 app = FastAPI()
 
-# CORS (permite peticiones desde React)
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Cambia a ["http://localhost:5173"] si usas Vite
+    allow_origins=["*"],  
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -186,9 +178,6 @@ async def query(data: dict):
     return {"response": response}
 
 
-# ==================================================
-# 🧩 MODO CLI (opcional, por si quieres probarlo manualmente)
-# ==================================================
 async def cli_mode():
     """Modo consola (opcional)"""
     agent_cli = MovieAgent()

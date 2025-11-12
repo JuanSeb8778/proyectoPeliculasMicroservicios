@@ -5,30 +5,21 @@ import google.generativeai as genai
 from mcp import ClientSession, StdioServerParameters
 from mcp.client.stdio import stdio_client
 
-# ==================================================
-# 🔧 CONFIGURACIÓN INICIAL
-# ==================================================
 
-# Cargar variables de entorno
+
 load_dotenv()
 
-# Obtener y verificar la API Key
 api_key = os.getenv('GEMINI_API_KEY')
 if not api_key:
     raise ValueError("❌ Error: No se encontró GEMINI_API_KEY en el archivo .env")
 
-# Configurar Gemini
 genai.configure(api_key=api_key)
 print("✓ API Key de Gemini configurada correctamente")
 
-# 🔹 Forzamos el uso del modelo gratuito
 selected_model = "models/gemini-2.0-flash"
 
 print(f"✅ Usando modelo gratuito: {selected_model}")
 
-# ==================================================
-# 🤖 CLASE PRINCIPAL DEL AGENTE
-# ==================================================
 
 class MovieAgent:
     def __init__(self):
@@ -151,9 +142,6 @@ Después de recibir los resultados, proporciona una respuesta amigable al usuari
         
         return response_text
 
-# ==================================================
-# 🚀 FUNCIÓN PRINCIPAL
-# ==================================================
 
 async def main():
     """Función principal"""
