@@ -1,11 +1,11 @@
 import React from "react";
-import ChatAgentePeliculas from "./components/ChatAgentePeliculas"; // 👈 Importa tu componente principal
-import "./App.css"; // Opcional: si quieres estilos globales simples
+import ChatAgentePeliculas from "./components/ChatAgentePeliculas"; 
+import "./App.css"; 
 
 function App() {
   return (
     <div className="app-wrapper">
-      <h1 className="app-title">🎬 Chat Agente de Películas</h1>
+      <h1 className="app-title">AI Agent Peliculist</h1>
       <ChatAgentePeliculas />
     </div>
   );

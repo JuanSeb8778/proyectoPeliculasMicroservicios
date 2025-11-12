@@ -1,12 +1,11 @@
 import React, { useState, useEffect, useRef } from "react";
-import "./ChatAgentePeliculas.css"; // 👈 Importa los estilos
+import "./ChatAgentePeliculas.css"; 
 
 const ChatAgentePeliculas = () => {
     const [messages, setMessages] = useState([]);
     const [inputValue, setInputValue] = useState("");
     const logContainerRef = useRef(null);
 
-    // Scroll automático al final
     useEffect(() => {
         logContainerRef.current?.scrollTo(0, logContainerRef.current.scrollHeight);
     }, [messages]);
@@ -28,7 +27,6 @@ const ChatAgentePeliculas = () => {
 
             let botText = data.response || data.error || "Error procesando la consulta.";
 
-            // Si la respuesta viene del tipo TOOL[add_movie](...)
             if (botText.startsWith("TOOL[add_movie]")) {
                 const match = botText.match(/title='([^']+)'/);
                 const title = match ? match[1] : "la película";
