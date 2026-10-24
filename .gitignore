@@ -1,2 +1,21 @@
+# Python
 venv/
+.venv/
 __pycache__/
+*.pyc
+
+# Variables de entorno y secretos
+.env
+.env.*
+
+# Node.js
+node_modules/
+
+# Java / Gradle / IDE
+build/
+.gradle/
+.idea/
+*.iml
+
+# Bases de datos locales
+*.db
