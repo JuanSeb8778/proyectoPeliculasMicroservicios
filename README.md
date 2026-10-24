@@ -32,7 +32,7 @@ Plataforma para gestionar películas, usuarios, reseñas y listas personales, co
 ┌──────────────────┐ ┌──────────────────┐ ┌──────────────────┐ ┌──────────────────┐
 │ movies           │ │ userMovieList    │ │ users            │ │ reviews          │
 │ Node.js/Express  │ │ Node.js/Express  │ │ Spring Boot      │ │ Spring Boot      │
-│ :3001            │ │ :3002            │ │ MongoDB          │ │ JPA + H2         │
+│ :3001            │ │ :3002            │ │ MongoDB :8080    │ │ JPA + H2 :8081   │
 └──────────────────┘ └──────────────────┘ └──────────────────┘ └──────────────────┘
 ```
 
@@ -40,12 +40,10 @@ Plataforma para gestionar películas, usuarios, reseñas y listas personales, co
 |---|---|---|---|
 | `moviesMicroservice` | Node.js · Express · Swagger | Catálogo de películas (CRUD) | `3001` |
 | `userMovieListMicroservice` | Node.js · Express · Swagger | Listas de películas de cada usuario | `3002` |
-| `usersMicroservice` | Java 21 · Spring Boot · MongoDB · MapStruct · Lombok | Gestión de usuarios | `8080`* |
-| `reviewsMicroservice` | Java 21 · Spring Boot · JPA · H2 · MapStruct · Lombok | Reseñas de películas | `8080`* |
+| `usersMicroservice` | Java 21 · Spring Boot · MongoDB · MapStruct · Lombok | Gestión de usuarios | `8080` |
+| `reviewsMicroservice` | Java 21 · Spring Boot · JPA · H2 · MapStruct · Lombok | Reseñas de películas | `8081` |
 | `service aiAssistant/AGENT` | Python · FastAPI · Gemini · MCP · PostgreSQL | Agente de IA que consulta el catálogo | `8000` |
 | `service aiAssistant/ui` | React | Chat con el agente de IA | `3000` |
-
-\* Ambos servicios Spring usan el puerto por defecto. Para ejecutarlos a la vez, define `server.port` en el `application.properties` de uno de ellos (por ejemplo `8081`).
 
 ## ✨ Funcionalidades
 
