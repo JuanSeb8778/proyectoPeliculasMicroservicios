@@ -3,7 +3,7 @@ from pydantic import BaseModel
 from datetime import datetime
 
 app = FastAPI(
-    title="IA Peliculeando",
+    title="ReelHub IA",
     description="IA so you can watch and review movies alone with your girlfriend hehe ;-) ;-)",
     version="1.0.0"
 )

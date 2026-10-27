@@ -1,4 +1,4 @@
-# 🎬 Peliculiando — Plataforma de Películas con Microservicios
+# 🎬 ReelHub — Plataforma de Películas con Microservicios
 
 Plataforma para gestionar películas, usuarios, reseñas y listas personales, construida con una **arquitectura de microservicios políglota** (Java, Node.js y Python). Incluye un **agente de IA con Google Gemini** que responde preguntas sobre el catálogo usando el **Model Context Protocol (MCP)**, con una interfaz de chat en React.
 
